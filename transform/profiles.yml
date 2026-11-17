@@ -1,0 +1,8 @@
+foliolake_training_data:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # DuckDB runs in-process; this file only holds views. Real outputs are Parquet files.
+      path: "{{ env_var('DBT_DUCKDB_PATH', 'target/warehouse.duckdb') }}"
+      threads: 1

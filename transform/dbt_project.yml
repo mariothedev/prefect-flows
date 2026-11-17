@@ -1,0 +1,20 @@
+name: foliolake_training_data
+version: "1.0.0"
+profile: foliolake_training_data
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+# Defaults for running dbt by hand from this folder (`cd transform && dbt build`).
+# The Prefect flow passes absolute paths and its own thresholds via --vars.
+vars:
+  raw_glob: "../data/raw/*.parquet"
+  curated_dir: "../data/curated"
+  faithfulness_min: 0.8
+  answer_relevancy_min: 0.5
+  eval_pct: 20
+
+models:
+  foliolake_training_data:
+    staging:
+      +materialized: view

@@ -1,0 +1,7 @@
+prefect==3.9.3
+mlflow-skinny==3.18.0
+dbt-core==1.12.7
+dbt-duckdb==1.11.1
+duckdb==2.0.0
+dvc[s3]==3.67.1
+pandas==3.1.1

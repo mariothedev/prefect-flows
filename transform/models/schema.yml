@@ -1,0 +1,27 @@
+models:
+  - name: stg_traces
+    description: One row per MLflow trace from the foliolake-rag experiment.
+    columns:
+      - name: trace_id
+        data_tests: [not_null, unique]
+      - name: request_time_ms
+        data_tests: [not_null]
+      - name: state
+        data_tests: [not_null]
+
+  - name: training_examples
+    description: Filtered, deduplicated chat examples with a deterministic train/eval split.
+    columns:
+      - name: trace_id
+        data_tests: [not_null, unique]
+      - name: question
+        data_tests: [not_null]
+      - name: answer
+        data_tests: [not_null]
+      - name: messages_json
+        data_tests: [not_null]
+      - name: split
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["train", "eval"]
